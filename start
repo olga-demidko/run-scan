@@ -1,0 +1,13 @@
+steps:
+    - name: Start Nexploit Scan
+      id: start
+      uses: NeuraLegion/run-scan@v1.1
+      with:
+        api_token: z4bpwzz.nexa.ad0j0xom4w9lqfafq2hwjznjhwszgqpp
+        name: GitHub scan ${{ github.sha }}
+        discovery_types: |
+          [ "crawler" ]
+        crawler_urls: |
+          [ "http://https://brokencrystals.com/" ]
+    - name: Get the output scan url
+      run: echo "The scan was started on ${{ steps.start.outputs.url }}"
